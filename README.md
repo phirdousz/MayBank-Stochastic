@@ -1,27 +1,24 @@
 # Maybank Stock Price Forecasting & GBM Modeling (STQA4113)
 
-This repository contains the analysis and implementation for **STQA4113 Assignment (2025–26)**. The project focuses on statistical data analysis, stochastic modeling using **Geometric Brownian Motion (GBM)**, and predictive evaluation of Maybank's weekly stock price and trading volume.
+This repository contains the group assignment analysis for **STQA4113 Stochastic Processes for Finance and Actuarial Science**. The project evaluates Maybank's weekly stock price and trading volume data from January 8, 2023, to November 10, 2025[cite: 1], applying **Geometric Brownian Motion (GBM)** to forecast out-of-sample prices and incorporating dividend adjustments.
 
 ---
 
-## Project Overview & Objectives
+## Executive Summary & Key Findings
 
-As part of quantitative financial analysis, this project explores historical pricing data from **January 8th, 2023, to November 10th, 2025**, split into in-sample and out-sample periods to test forecasting accuracy. 
-
-### Key Tasks Covered:
-1. **Exploratory Data Analysis (EDA):** Computation of summary statistics (maximum, minimum, and standard deviation) for Maybank stock prices.
-2. **Data Visualization:** Plotting price and volume against time, alongside rolling volatility ($\sigma$) and market drift ($\mu^M$).
-3. **Stochastic Assumptions:** Outlining the theoretical assumptions underlying the Geometric Brownian Motion (GBM) model.
-4. **Log Returns & Drift Calculation:** 
-   - Weekly log returns computed using $ln(\frac{S_t}{S_{t-1}})$.
-   - 1-year rolling average log return (raw drift, $\mu$) and standard deviation (volatility, $\sigma$).
-   - Market drift derivation: $\mu^M = \mu - \frac{\sigma^2}{2}$.
-5. **Out-of-Sample GBM Forecasting (Sep 15 – Nov 10, 2025):**
-   - Forecasting prices using discretized GBM equations.
-   - Constructing 5% / 90% confidence intervals and evaluating performance using **Mean Percentage Error (MPE)**.
-6. **Dividend Incorporation:** 
-   - Analyzing stock price dynamics post-dividend payout (average annual dividend of RM0.60/share).
-   - Modifying the GBM formulation to account for dividends, re-forecasting, and comparing error metrics against the standard model.
-7. **Critical Evaluation:** Assessing whether GBM is a suitable model for forecasting Maybank stock prices.
+1. **Exploratory Data Analysis:** Maybank exhibited a moderate price range (Maximum: RM10.80, Minimum: RM8.38) with a low standard deviation ($0.646$), reflecting its stability as a large-cap banking stock[cite: 5].
+2. **GBM & Drift Dynamics:** Weekly log returns and 1-year rolling volatility ($\sigma$) were computed[cite: 6, 9]. The market drift ($\mu^M = \mu - \frac{\sigma^2}{2}$) showed a downward trend over time, indicating a slowing growth rate under volatility[cite: 12, 13].
+3. **Out-of-Sample Forecasting:** Using in-sample data to forecast the period of September 15 to November 10, 2025, the standard GBM model kept actual market prices successfully within its 90% confidence interval, yielding a Mean Percentage Error (MPE) of approximately $0.00068$[cite: 14, 16, 17].
+4. **Dividend Incorporation:** Factoring in Maybank’s average annual dividend of RM0.60 per share shifted the expected price path slightly downward, resulting in an MPE of approximately $0.00184$[cite: 18, 21]. While it increased short-term error marginally, it improved the theoretical realism of the model without altering return volatility[cite: 21, 22].
+5. **Model Suitability:** GBM serves as a robust benchmark model for capturing long-term trends and risk bounds, but its assumption of constant drift and volatility limits its precision for short-term price reversals[cite: 22].
 
 ---
+
+## Repository Structure
+
+```text
+├── data/
+│   └── maybank_data.xlsx       # Weekly price and volume dataset
+├── report/
+│   └── assignment_report.pdf   # Full group assignment documentation
+└── README.md                   # Project portfolio overview
